@@ -3,16 +3,45 @@
 namespace App\Livewire;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\Hash;
 
 class Users extends Component
 {
+     #[Validate('required|min:3')]
     public $name='';
+
+    #[Validate('required|email:dns|unique:users')]
     public $email='';
+
+    #[Validate('required')]
     public $password='';
     public function createNewUser()
     {
+        //  $validated = $this->validate([
+        //     'name' => 'required|min:3',
+        //     'email' => 'required|email:dns|unique:users',
+        //     'password' => 'required',
+        // ],[
+        //     'name.required' => 'Nama harus diisi',
+        //     'name.min' => 'Nama minimal 3 karakter',
+        //     'email.required' => 'Email harus diisi',
+        //     'email.email' => 'Email tidak valid',
+        //     'email.unique' => 'Email sudah terdaftar',
+        //     'password.required' => 'Password harus diisi',
+        // ]);
+
+        // User::create($validated);
+
+        // User::create([
+        //     'name' => $validated['name'],
+        //     'email' => $validated['email'],
+        //     'password' => Hash::make($validated['password']),
+        // ]);
+
+        $this->validate();
+
         User::create([
             'name' => $this->name,
             'email' => $this->email,
@@ -20,6 +49,7 @@ class Users extends Component
         ]);
 
         $this->reset();
+        session()->flash('status', 'User berhasil ditambahkan');
     }
     // public $title = 'Users Halaman';
     public function render()
