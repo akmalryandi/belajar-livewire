@@ -6,9 +6,15 @@ use App\Models\User;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Hash;
+use Livewire\WithFileUploads;
 
 class Users extends Component
 {
+    use WithFileUploads;
+
+    #[Validate('image|max:5120|')] // 1MB Max
+    public $avatar;
+
      #[Validate('required|min:3')]
     public $name='';
 
@@ -40,12 +46,17 @@ class Users extends Component
         //     'password' => Hash::make($validated['password']),
         // ]);
 
-        $this->validate();
+        $validated = $this->validate();
+
+        if ($this->avatar) {
+            $validated['avatar'] = $this->avatar->store('avatar', 'public');
+        }
 
         User::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
+            'avatar' => $validated['avatar']
         ]);
 
         $this->reset();
