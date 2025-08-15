@@ -14,17 +14,29 @@ class Users extends Component
     use WithFileUploads;
     use WithPagination;
 
+    public $query = '';
+
     #[Validate('image|max:5120|')] // 1MB Max
     public $avatar;
 
-     #[Validate('required|min:3')]
-    public $name='';
+    #[Validate('required|min:3')]
+    public $name = '';
 
     #[Validate('required|email:dns|unique:users')]
-    public $email='';
+    public $email = '';
 
     #[Validate('required')]
-    public $password='';
+    public $password = '';
+
+    public function updatingQuery()
+    {
+        $this->resetPage();
+    }
+
+    public function search()
+    {
+        $this->resetPage();
+    }
     public function createNewUser()
     {
         //  $validated = $this->validate([
@@ -67,9 +79,10 @@ class Users extends Component
     // public $title = 'Users Halaman';
     public function render()
     {
-        return view('livewire.users' , [
+        return view('livewire.users', [
             'title' => 'Users Halaman',
-            'users' => User::latest()->paginate(6)
+            'users' => User::latest()->
+            where('name', 'like', '%' . $this->query . '%')->paginate(6)
         ]);
     }
 }
