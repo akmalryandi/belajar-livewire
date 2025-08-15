@@ -16,7 +16,11 @@
 
 <body>
     {{-- @livewire('users') --}}
-    <livewire:users />
+    {{-- <livewire:users /> --}}
+    <div class="justify-center flex gap-1">
+        <livewire:user-register-form />
+        <livewire:users-list />
+    </div>
 </body>
 
 </html>

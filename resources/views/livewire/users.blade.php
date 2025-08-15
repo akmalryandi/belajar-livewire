@@ -1,5 +1,5 @@
 <div class="justify-center flex gap-1">
-    <div class="w-1/3 my-10">
+    {{-- <div class="w-1/3 my-10">
 
         <div class="mb-5">
             <div class="mx-auto">
@@ -110,18 +110,9 @@
                 </form>
             </div>
         </div>
+    </div> --}}
 
-        {{-- <hr class="border-t border-gray-400">
-        @foreach ($users as $user)
-            <ul class="list-disc">
-                <li>{{ $user->name }}</li>
-            </ul>
-        @endforeach --}}
-
-
-    </div>
-
-    <div class="w-1/3 my-10">
+    {{-- <div class="w-1/3 my-10">
         <div class="mx-auto mb-4">
             <h2 class="mt-1 text-center text-2xl/9 font-bold tracking-tight text-gray-900">List User
             </h2>
@@ -166,6 +157,6 @@
         <div>
             {{ $users->links() }}
         </div>
-    </div>
+    </div> --}}
 
 </div>
