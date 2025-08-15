@@ -4,13 +4,15 @@ namespace App\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Hash;
-use Livewire\WithFileUploads;
 
 class Users extends Component
 {
     use WithFileUploads;
+    use WithPagination;
 
     #[Validate('image|max:5120|')] // 1MB Max
     public $avatar;
@@ -67,7 +69,7 @@ class Users extends Component
     {
         return view('livewire.users' , [
             'title' => 'Users Halaman',
-            'users' => User::all()
+            'users' => User::latest()->paginate(6)
         ]);
     }
 }

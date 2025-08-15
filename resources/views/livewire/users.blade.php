@@ -1,13 +1,13 @@
-<div class="w-2/3 m-auto my-5">
-    <div class="mb-5">
+<div class="justify-center flex gap-1">
+    <div class="w-1/3 my-10">
 
-        <div>
+        <div class="mb-5">
             <div class="mx-auto">
                 <h2 class="mt-1 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Create User
                 </h2>
             </div>
 
-            <div class="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
+            <div class="mt-5 sm:mx-auto sm:max-w-sm">
                 @if (session('status'))
                     <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
                         {{ session('status') }}
@@ -107,17 +107,47 @@
                             Create
                             User</button>
                     </div>
-
                 </form>
             </div>
         </div>
-    </div>
-    <hr class="border-t border-gray-400">
-    @foreach ($users as $user)
-        <ul class="list-disc">
-            <li>{{ $user->name }}</li>
-        </ul>
-    @endforeach
 
+        {{-- <hr class="border-t border-gray-400">
+        @foreach ($users as $user)
+            <ul class="list-disc">
+                <li>{{ $user->name }}</li>
+            </ul>
+        @endforeach --}}
+
+
+    </div>
+
+    <div class="w-1/3 my-10">
+        <div class="mx-auto mb-4">
+            <h2 class="mt-1 text-center text-2xl/9 font-bold tracking-tight text-gray-900">List User
+            </h2>
+        </div>
+        <ul role="list" class="divide-y divide-gray-100">
+            @foreach ($users as $user)
+                <li class="flex justify-between gap-x-6 py-5">
+                    <div class="flex min-w-0 gap-x-4">
+                        <img src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('img/avatar.png') }}"
+                            alt="" class="size-12 flex-none rounded-full bg-gray-50 object-contain" />
+                        <div class="min-w-0 flex-auto">
+                            <p class="text-sm/6 font-semibold text-gray-900">{{ $user->name }}</p>
+                            <p class="mt-1 truncate text-xs/5 text-gray-500">{{ $user->email }}</p>
+                        </div>
+                    </div>
+                    <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                        <p class="mt-1 text-xs/5 text-gray-500">Joined {{ $user->created_at->diffForHumans() }}
+                        </p>
+                    </div>
+                </li>
+            @endforeach
+
+        </ul>
+        <div>
+            {{ $users->links() }}
+        </div>
+    </div>
 
 </div>
