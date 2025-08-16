@@ -19,7 +19,7 @@
     {{-- <livewire:users /> --}}
     <div class="justify-center flex gap-1">
         <livewire:user-register-form />
-        <livewire:users-list />
+        <livewire:users-list lazy/>
     </div>
 </body>
 

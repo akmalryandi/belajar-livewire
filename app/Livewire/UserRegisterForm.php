@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 class UserRegisterForm extends Component
 {
     use WithFileUploads;
-     #[Validate('image|max:5120|')] // 1MB Max
+    #[Validate('image|max:5120|')] // 1MB Max
     public $avatar;
 
     #[Validate('required|min:3')]
@@ -60,10 +60,12 @@ class UserRegisterForm extends Component
 
         $this->reset();
         session()->flash('status', 'User berhasil ditambahkan');
-         $this->dispatch('user-created');
+        $this->dispatch('user-created');
     }
+
     public function render()
     {
+
         return view('livewire.user-register-form');
     }
 }

@@ -22,7 +22,7 @@
 
     <ul role="list" class="divide-y divide-gray-100">
         @foreach ($users as $user)
-            <li class="flex justify-between gap-x-6 py-5">
+            <li wire:poll.keep-alive class="flex justify-between gap-x-6 py-5">
                 <div class="flex min-w-0 gap-x-4">
                     <img src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('img/avatar.png') }}"
                         alt="" class="size-12 flex-none rounded-full bg-gray-50 object-contain" />
