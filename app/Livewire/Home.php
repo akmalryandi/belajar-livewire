@@ -2,16 +2,14 @@
 
 namespace App\Livewire;
 
-
 use Livewire\Component;
 use Livewire\Attributes\Title;
 
-
-class Users extends Component
+class Home extends Component
 {
-    #[Title('Users')]
+    #[Title('Home')]
     public function render()
     {
-        return view('livewire.users');
+        return view('livewire.home');
     }
 }

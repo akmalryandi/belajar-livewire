@@ -1,4 +1,4 @@
-<div class="w-1/3 my-10">
+<div class="w-full md:w-1/2 lg:w-1/3 my-6">
 
     <div class="mb-5">
         <div class="mx-auto">

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -14,13 +14,13 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
+<body> --}}
     {{-- @livewire('users') --}}
     {{-- <livewire:users /> --}}
-    <div class="justify-center flex gap-1">
+    {{-- <div class="justify-center flex gap-1">
         <livewire:user-register-form />
         <livewire:users-list lazy/>
     </div>
 </body>
 
-</html>
+</html> --}}

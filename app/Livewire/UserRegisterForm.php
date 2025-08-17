@@ -7,6 +7,8 @@ use App\Models\User;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Attributes\Title;
+
 
 class UserRegisterForm extends Component
 {

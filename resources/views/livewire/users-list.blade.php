@@ -1,4 +1,4 @@
-<div class="w-1/3 my-10">
+<div class="w-full md:w-1/2 lg:w-1/3 my-6">
     <div class="mx-auto mb-4">
         <h2 class="mt-1 text-center text-2xl/9 font-bold tracking-tight text-gray-900">List User
         </h2>
