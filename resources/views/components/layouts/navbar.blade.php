@@ -33,6 +33,9 @@
                     <li>
                          <x-nav-link href="/about" :current="request()->is('about')">About</x-nav-link>
                     </li>
+                    <li>
+                         <x-nav-link href="/contacts" :current="request()->is('contacts')">Contact</x-nav-link>
+                    </li>
                 </ul>
             </div>
         </div>
